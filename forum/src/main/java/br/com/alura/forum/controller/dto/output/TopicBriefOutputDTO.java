@@ -3,6 +3,7 @@ package br.com.alura.forum.controller.dto.output;
 import br.com.alura.forum.model.topic.domain.Topic;
 import br.com.alura.forum.model.topic.domain.TopicStatus;
 import lombok.Getter;
+import org.springframework.data.domain.Page;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -36,7 +37,7 @@ public class TopicBriefOutputDTO {
 
     }
 
-    public static List<TopicBriefOutputDTO> listFromTopics(List<Topic> topics) {
+    public static List<TopicBriefOutputDTO> listFromTopics(Page<Topic> topics) {
         return topics.stream().map(TopicBriefOutputDTO::new).collect(Collectors.toList());
     }
     private static Long getSecondsSince(Instant lastUpdate) {
